@@ -5,7 +5,6 @@
 1.   [NexTraq](#nextraq)
      1.   [Modifications](#modifications)
           1.   [General](#general)
-          1.   [Java](#java)
           1.   [JavaScript](#javascript)
      1.   [Formatting Tools](#formatting-tools)
           1.   [IDE Google Style Config](#ide-google-style-config)
@@ -23,12 +22,12 @@
 
 This repo contains the NexTraq style guides, primarily based on the Google Style
 Guides for the relevant languages. It does, however, also include the Vue.js
-style guide. adherence to the following guides is required for submission of new
+style guide. Adherence to the following guides is required for submission of new
 code:
 
-*   [Java](javaguide.html)
+*   [Java](nextraq-javaguide.html)
 *   JavaScript
-    *   [JS](jsguide.html)
+    *   [JS](nextraq-jsguide.html)
     *   [Vue.js](https://vuejs.org/v2/style-guide/) (Non-Google guide)
 *   Markdown
     *   [Google Markdown Guide](docguide/style.md)
@@ -41,6 +40,8 @@ Engineers are asked to read through the relevant guide before making a change in
 a given language. Any points that are not mentioned or are left ambiguous in the
 guides are left up to the engineer’s discretion. Reviewers are also asked to
 ensure that code adheres to the style guide before approving changes.
+
+Original Google guides are left for history and comparison.
 
 ### Modifications
 
@@ -57,18 +58,16 @@ carefully about your use case and consider alternatives. (There are no linting
 configurations for this rule; it is the responsibility of the code author and
 reviewer to ensure it is followed)
 
-#### Java
+In addition, indent size will be 4 for all languages. This will also imply:
 
-*   Indent size will be 4. This will also imply:
-    *   Continuation indent size is 8
-    *   Tab size is 4
+*   Continuation indent size is 8
+*   Tab size is 4
 
 #### JavaScript
 
-*   no-multi-str: We have disabled the rule that disallows multiline strings
-*   es-module-exports: We will set the rule enforcing that only symbols used in
-    other modules are exported to ‘warn’. In vanilla JS, this rule is important,
-    but it is fundamentally incompatible with Vue.js
+es-module-exports: We will set the rule enforcing that only symbols used in
+other modules are exported to ‘warn’. In vanilla JS, this rule is important, but
+it is fundamentally incompatible with Vue.js
 
 ### Formatting Tools
 
@@ -85,19 +84,20 @@ code after formatting to ensure it is as readable as possible.
 #### IDE Google Style Config
 
 Google provides configuration files which bring IDEs into compliance with the
-Google style guide, specifically for [IntelliJ](intellij-java-google-style.xml)
-and [Eclipse](eclipse-java-google-style.xml) . For IntelliJ, follow the
+Google style guide, specifically for [IntelliJ](intellij-java-nextraq-style.xml)
+and [Eclipse](eclipse-java-nextraq-style.xml) . For IntelliJ, follow the
 instructions
 [here](https://www.jetbrains.com/help/idea/copying-code-style-settings.html) to
 install the style guide. For Eclipse, follow the instructions
 [here](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fpreferences%2Fjava%2Fcodestyle%2Fref-preferences-formatter.htm).
 
-#### [google-java-format](https://github.com/google/google-java-format)
+#### google-java-format
 
-This open source project provides a CLI tool as well as IDE integrations for
-IntelliJ, Android Studio, and Eclipse. These provide both linting and automatic
-formatting of Java files. This tool also has two options for integration with
-Gradle:
+This open source project provides a CLI tool, called
+[google-java-format](https://github.com/google/google-java-format) as well as
+IDE integrations for IntelliJ, Android Studio, and Eclipse. These provide both
+linting and automatic formatting of Java files. This tool also has two options
+for integration with Gradle:
 [google-java-format-gradle-plugin](https://github.com/sherter/google-java-format-gradle-plugin)
 and integration with a formatting tool called
 [Spotless](https://github.com/diffplug/spotless/tree/master/plugin-gradle#applying-to-java-source-google-java-format).
@@ -160,10 +160,10 @@ unclear whether it is possible to validate specific lines. Prettier does not
 have a very extensive library of rules, in comparison to remark, and the plugins
 feature, which allows for extended rulesets, is currently in beta.
 
-##### [Markdown Navigator](https://github.com/vsch/idea-multimarkdown)
+##### Markdown Navigator
 
-Markdown Navigator is an IntelliJ plugin which, with the paid version, supports
-automatic formatting.
+[Markdown Navigator](https://github.com/vsch/idea-multimarkdown) is an IntelliJ
+plugin which, with the paid version, supports automatic formatting.
 
 ### Future Work
 
