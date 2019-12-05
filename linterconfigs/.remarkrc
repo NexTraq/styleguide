@@ -1,0 +1,17 @@
+{
+    "plugins" : [
+        "lint",
+        "preset-lint-markdown-style-guide",
+        "lint-unordered-list-marker-style",
+        "remark-toc",
+        "remark-validate-links",
+        "lint-no-dead-urls",
+        "remark-stringify",
+        ["lint-list-item-indent", "tab-size"],
+        ["lint-list-item-spacing", false]
+    ],
+    "settings" : {
+        "bullet" : "*",
+        "tight" : true
+    }
+}
