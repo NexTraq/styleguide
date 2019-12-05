@@ -22,7 +22,7 @@
 
 This repo contains the NexTraq style guides, primarily based on the Google Style
 Guides for the relevant languages. It does, however, also include the Vue.js
-style guide. adherence to the following guides is required for submission of new
+style guide. Adherence to the following guides is required for submission of new
 code:
 
 *   [Java](nextraq-javaguide.html)
