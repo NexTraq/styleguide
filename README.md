@@ -84,8 +84,9 @@ code after formatting to ensure it is as readable as possible.
 #### IDE Google Style Config
 
 Google provides configuration files which bring IDEs into compliance with the
-Google style guide, specifically for [IntelliJ](intellij-java-nextraq-style.xml)
-and [Eclipse](eclipse-java-nextraq-style.xml) . For IntelliJ, follow the
+Google style guide, specifically for
+[IntelliJ](ideconfigs/intellij-java-nextraq-style.xml) and
+[Eclipse](ideconfigs/eclipse-java-nextraq-style.xml) . For IntelliJ, follow the
 instructions
 [here](https://www.jetbrains.com/help/idea/copying-code-style-settings.html) to
 install the style guide. For Eclipse, follow the instructions
@@ -212,7 +213,7 @@ Comments][go] and [Effective Dart][dart].
 <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
 
 [cpp]: https://google.github.io/styleguide/cppguide.html
-[objc]: objcguide.md
+[objc]: google/objcguide.md
 [java]: https://google.github.io/styleguide/javaguide.html
 [py]: https://google.github.io/styleguide/pyguide.html
 [r]: https://google.github.io/styleguide/Rguide.html
