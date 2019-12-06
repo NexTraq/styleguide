@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- If this file is changed, also change: intellij-java-nextraq-style.xml -->
 <profiles version="17">
 <profile kind="CodeFormatterProfile" name="NexTraq Style" version="17">
 <setting id="org.eclipse.jdt.core.formatter.insert_space_after_ellipsis" value="insert"/>
