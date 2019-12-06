@@ -1,0 +1,12 @@
+plugins {
+    id "java" 
+    id "com.diffplug.gradle.spotless" version "3.26.1"
+}
+
+spotless {
+    java {
+        target "*.java"
+        googleJavaFormat().aosp() // AOSP variant uses 4-space indentation
+        endWithNewline()
+    }
+}
