@@ -8,7 +8,6 @@ buildscript {
     }
     dependencies {
         classpath "com.diffplug.spotless:spotless-plugin-gradle:3.27.1"
-        classpath "com.google.googlejavaformat:google-java-format:1.7"
     }
 }
 apply plugin:  "java"
@@ -17,7 +16,8 @@ apply plugin: com.diffplug.gradle.spotless.SpotlessPlugin // Must use this synta
 spotless {
     java {
         target "**/*.java"
-        googleJavaFormat().aosp() // AOSP variant uses 4-space indentation
+        target "*.java"
+        eclipse().configFile('../../ideconfigs/eclipse-java-nextraq-style.xml')
         endWithNewline()
     }
 }

@@ -5,4 +5,5 @@ buildscript {
     }
 }
 
-apply from: 'spotless.gradle'
+apply plugin: "java"
+apply from: "spotless.gradle"
