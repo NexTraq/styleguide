@@ -10,6 +10,7 @@ module.exports = {
         'plugin:jsdoc/recommended',
         // https://github.com/standard/standard/blob/master/docs/RULES-en.md
         'standard',
+        // https://github.com/google/styleguide/blob/gh-pages/jsguide.html
         'google',
     ],
     'rules': {
