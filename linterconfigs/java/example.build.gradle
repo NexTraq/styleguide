@@ -1,0 +1,8 @@
+// Must have repository to import spotless in build script
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply from: 'spotless.gradle'
