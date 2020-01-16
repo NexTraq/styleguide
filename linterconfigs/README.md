@@ -139,6 +139,7 @@ prettier --write --config <path/to/repo>/linterconfigs/.prettierrc.js \
     "**/*.{json,html,md}" 
 ```
 
-For the time being, we will also be using Prettier for Markdown file formatting. This
-is because the Markdownlint functionality for line length is broken, and support
+For the time being, we will also be using Prettier for Markdown file formatting.
+This is because the Markdownlint functionality for line length is broken
+([ticket](https://github.com/markdownlint/markdownlint/issues/295), and support
 for formatting line length is explicitly not planned.
