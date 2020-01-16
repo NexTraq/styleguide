@@ -78,9 +78,10 @@ Content.
 
 ## Character line limit
 
-Obey projects' character line limit wherever possible. Long URLs and tables are
-the usual suspects when breaking the rule. (Headings also can't be wrapped, but
-we encourage keeping them short). Otherwise, wrap your text:
+The character limit for Markdown is 80 characters. Please obey this
+wherever possible. Long URLs and tables are the usual suspects when breaking the
+rule. (Headings also can't be wrapped, but we encourage keeping them short).
+Otherwise, wrap your text:
 
 ```markdown
 Lorem ipsum dolor sit amet, nec eius volumus patrioque cu, nec et commodo
