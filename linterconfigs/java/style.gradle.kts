@@ -20,11 +20,20 @@ configure<CheckstyleExtension> {
     toolVersion = "8.28"
     configFile = rootProject.file("$projectDir/gradle/nextraq_checkstyle.xml")
 }
+tasks.withType(Checkstyle::class) {
+    source(projectDir.absolutePath)
+    classpath = files()
+}
 
 configure<SpotlessExtension> {
     java {
         eclipse().configFile("$projectDir/gradle/eclipse-java-nextraq-style.xml")
         endWithNewline()
+    }
+}
+tasks {
+    register<Checkstyle>("checkstyleChanged") {
+        include(*(getChangedFiles().map { it.toRelativeString(file(".")) }.toTypedArray()))
     }
 }
 
