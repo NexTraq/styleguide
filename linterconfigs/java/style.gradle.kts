@@ -1,6 +1,7 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
 import com.diffplug.gradle.spotless.SpotlessTask
+import java.lang.IllegalStateException
 
 // Must use legacy plugin syntax for importing external files to build.gradle
 buildscript {
@@ -31,9 +32,10 @@ configure<SpotlessExtension> {
         endWithNewline()
     }
 }
+
 tasks {
     register<Checkstyle>("checkstyleChanged") {
-        include(*(getChangedFiles().map { it.toRelativeString(file(".")) }.toTypedArray()))
+        include(*(getChangedFiles().toTypedArray()))
     }
 }
 
@@ -51,7 +53,15 @@ if (gradle.startParameter.taskNames
     }
 }
 
-fun getChangedFiles(): List<File> {
+/**
+ * Determines which files have been changed in git between the source branch and the target branch specified in the
+ * properties. If no target branch is specified, master is used. If no source branch is specified, nothing is used.
+ * The latter will result in the current working copy being compared to the target branch. Note that, unless "origin/"
+ * is specified, this function will compare local copies.
+ *
+ * @return The relative paths (from the current working directory) to all changed files
+ */
+fun getChangedFiles(): List<String> {
     val sourceBranchProp: String? by project
     val targetBranchProp: String? by project
     val sourceBranch: String? = if (sourceBranchProp.isNullOrEmpty()) "" else sourceBranchProp
@@ -61,19 +71,26 @@ fun getChangedFiles(): List<File> {
             .trim().runCommand().trim().split("\n")
             .filter { it.isNotEmpty() }
             .map { filename ->
-                println("Filename: $filename")
                 val scrubbedPath: String = """\w\s+(.+)""".toRegex().find(filename)?.groupValues?.get(1)!!
-                file("$projectDir${File.separator}$scrubbedPath")
+                file("$projectDir${File.separator}$scrubbedPath").toRelativeString(file("."))
             }.toList()
 }
 
+/**
+ * Runs a String as a native command. Used here for git.
+ *
+ * @throws IllegalStateException if the process returns in error
+ * @return The standard output of the command as a String
+ */
 fun String.runCommand(): String {
     val proc: Process = ProcessBuilder(*this.split(" ").toTypedArray())
             .directory(projectDir)
             .redirectOutput(ProcessBuilder.Redirect.PIPE)
-            .redirectError(ProcessBuilder.Redirect.PIPE)
             .start()
 
     proc.waitFor(1, TimeUnit.MINUTES)
+    if (proc.exitValue() != 0) {
+        throw IllegalStateException("git diff command failed:\n ${proc.errorStream.bufferedReader().readText()}")
+    }
     return proc.inputStream.bufferedReader().readText()
 }
