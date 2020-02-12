@@ -25,7 +25,7 @@ rule 'MD026' # no-trailing-punctuation: Triggers on punctuation at end of header
 rule 'MD027' # no-multiple-space-blockquote
 rule 'MD028' # no-blanks-blockquote
 rule 'MD029' # ol-prefix: Enforces lazy ordered lists
-rule 'MD030', :ul_multi => 3, :ol_multi => 2 # list-marker-space
+rule 'MD030', :ul_single => 3, :ol_single => 2, :ul_multi => 3, :ol_multi => 2 # list-marker-space
 rule 'MD031' # blanks-around-fences
 rule 'MD032' # blanks-around-lists
 rule 'MD033' # no-inline-html
