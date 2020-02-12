@@ -1,7 +1,7 @@
 rule 'MD001' # header-incement
 rule 'MD002' # first-header-h1
-rule 'MD003', :style => 'atx' # header-style: Use # to denote header
-rule 'MD004', :style => 'asterisk' # ul-style
+rule 'MD003', :style => :atx # header-style: Use # to denote header
+rule 'MD004', :style => :asterisk # ul-style
 rule 'MD005' # list-indent: Enforces consistent list indentation
 rule 'MD006' # ul-start-left
 rule 'MD007', :indent => 4 # ul-indent
