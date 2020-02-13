@@ -1,2 +1,52 @@
-# Command line configuration options for markdownlint
 "default": false
+header-increment: true
+first-header-h1: true
+header-style:
+    style: atx # Use # to denote header
+ul-style:
+    style: asterisk
+list-indent: true # Enforces consistent list indentation
+ul-start-left: true
+ul-indent:
+    indent: 4
+no-trailing-spaces:
+    # For some reason, this rule will, by default, allow 2 spaces. See:
+    # (https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md009---trailing-spaces)
+    br_spaces: 0
+    strict: true
+no-hard-tabs: true
+no-reversed-links: true
+no-multiple-blanks: true
+
+# TODO(https://github.com/markdownlint/markdownlint/issues/295): Line length rule does not trigger if there are no
+                                                               # spaces after the break.
+line-length:
+    line_length: 120
+
+commands-show-output: true # Triggers when bash code is preceded by $, unless command output is displayed
+no-missing-space-atx: true
+no-multiple-space-atx: true
+blanks-around-headers: true
+header-start-left: true
+no-duplicate-header: true
+single-h1: true
+no-trailing-punctuation: true # Triggers on punctuation at end of header
+no-multiple-space-blockquote: true
+no-blanks-blockquote: true
+ol-prefix: true # Enforces lazy ordered lists
+list-marker-space: # Enforces that list text is exactly 4 characters from the previous indent level
+    ul_single: 3
+    ol_single: 2
+    ul_multi: 3
+    ol_multi: 2
+blanks-around-fences: true
+blanks-around-lists: true
+no-inline-html: true
+no-bare-urls: true # URLs must be linked
+hr-style: true # Enforces consistent horizontal rule style
+no-emphasis-as-header: true # Triggers on single lines of entirely emphasized text
+no-space-in-emphasis: true
+no-space-in-code: true
+no-space-in-link: true
+first-line-h1: true
+code-block-style: true # Enforces fencing for code blocks (instead of indentation)
