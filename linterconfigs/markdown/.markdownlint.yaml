@@ -22,7 +22,9 @@ no-multiple-blanks: true
                                                                # spaces after the break.
 line-length:
     line_length: 120
-
+    tables: false # Except tables from this rule to preserve their formatting (but still avoid tables where possible)
+    code_blocks: false # Except code blocks for demonstration purposes, but you should still strive to fit code blocks
+                       # within the line limit.
 commands-show-output: true # Triggers when bash code is preceded by $, unless command output is displayed
 no-missing-space-atx: true
 no-multiple-space-atx: true
