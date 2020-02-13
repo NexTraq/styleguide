@@ -1,8 +1,7 @@
 # Markdown style guide
 
-Much of what makes Markdown great is the ability to write plain text, and get
-great formatted output as a result. To keep the slate clean for the next author,
-your Markdown should be simple and consistent with the whole corpus wherever
+Much of what makes Markdown great is the ability to write plain text, and get great formatted output as a result. To
+keep the slate clean for the next author, your Markdown should be simple and consistent with the whole corpus wherever
 possible.
 
 We seek to balance three goals:
@@ -54,34 +53,30 @@ Content.
 * https://link-to-more-info
 ```
 
-1.  `# Document Title`: The first heading should be a level one heading, and
-    should ideally be the same or nearly the same as the filename. The first
-    level one heading is used as the page `<title>`.
+1.  `# Document Title`: The first heading should be a level one heading, and should ideally be the same or nearly the
+    same as the filename. The first level one heading is used as the page `<title>`.
 
-1.  `author`: *Optional*. If you'd like to claim ownership of the document or
-    if you are very proud of it, add yourself under the title. However,
-    revision history generally suffices.
+1.  `author`: *Optional*. If you'd like to claim ownership of the document or if you are very proud of it, add yourself
+    under the title. However, revision history generally suffices.
 
-1.  `Short introduction.` 1-3 sentences providing a high-level overview of the
-    topic. Imagine yourself as a complete newbie, who landed on your "Extending
-    Foo" doc and needs to know the most basic assumptions you take for granted.
+1.  `Short introduction.` 1-3 sentences providing a high-level overview of the topic. Imagine yourself as a complete
+    newbie, who landed on your "Extending Foo" doc and needs to know the most basic assumptions you take for granted.
     "What is Foo? Why would I extend it?"
 
-1.  `[TOC]`: if you use hosting that supports table of contents, such as Gitiles,
-    put `[TOC]` after the short introduction. See
+1.  `[TOC]`: if you use hosting that supports table of contents, such as Gitiles, put `[TOC]` after the short
+    introduction. See
     [`[TOC]` documentation](https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md#Table-of-contents).
 
 1.  `## Topic`: The rest of your headings should start from level 2.
 
-1.  `## See also`: Put miscellaneous links at the bottom for the user who wants
-    to know more or didn't find what she needed.
+1.  `## See also`: Put miscellaneous links at the bottom for the user who wants to know more or didn't find what she
+    needed.
 
 ## Character line limit
 
-The character limit for Markdown is 120 characters. Please obey this
-wherever possible. Long URLs and tables are the usual suspects when breaking the
-rule. (Headings also can't be wrapped, but we encourage keeping them short).
-Otherwise, wrap your text:
+The character limit for Markdown is 120 characters. Please obey this wherever possible. Long URLs and tables are the
+usual suspects when breaking the rule. (Headings also can't be wrapped, but we encourage keeping them short). Otherwise,
+wrap your text:
 
 ```markdown
 Lorem ipsum dolor sit amet, nec eius volumus patrioque cu, nec et commodo
@@ -91,8 +86,7 @@ hendrerit, id nobis saperet fuisset ius.
     interesset. See the [foo docs](https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md).
 ```
 
-Often, inserting a newline before a long link preserves readability while
-minimizing the overflow:
+Often, inserting a newline before a long link preserves readability while minimizing the overflow:
 
 ```markdown
 Lorem ipsum dolor sit amet. See the
@@ -104,13 +98,12 @@ for details.
 
 Don't use trailing whitespace, use a trailing backslash.
 
-The [CommonMark spec](http://spec.commonmark.org/0.20/#hard-line-breaks) decrees
-that two spaces at the end of a line should insert a `<br />` tag. However, many
-directories have a trailing whitespace presubmit check in place, and many IDEs
-will clean it up anyway.
+The [CommonMark spec](http://spec.commonmark.org/0.20/#hard-line-breaks) decrees that two spaces at the end of a line
+should insert a `<br />` tag. However, many directories have a trailing whitespace presubmit check in place, and many
+IDEs will clean it up anyway.
 
-Best practice is to avoid the need for a `<br />` altogether. Markdown creates
-paragraph tags for you simply with newlines: get used to that.
+Best practice is to avoid the need for a `<br />` altogether. Markdown creates paragraph tags for you simply with
+newlines: get used to that.
 
 ## Headings
 
@@ -120,9 +113,8 @@ paragraph tags for you simply with newlines: get used to that.
 ## Heading 2
 ```
 
-Headings with `=` or `-` underlines can be annoying to maintain and don't fit
-with the rest of the heading syntax. The user has to ask: Does `---` mean H1 or
-H2?
+Headings with `=` or `-` underlines can be annoying to maintain and don't fit with the rest of the heading syntax. The
+user has to ask: Does `---` mean H1 or H2?
 
 ```markdown
 Heading - do you remember what level? DO NOT DO THIS.
@@ -154,9 +146,8 @@ Text after... DO NOT DO THIS.
 
 ### Use lazy numbering for long lists
 
-Markdown is smart enough to let the resulting HTML render your numbered lists
-correctly. For longer lists that may change, especially long nested lists, use
-"lazy" numbering:
+Markdown is smart enough to let the resulting HTML render your numbered lists correctly. For longer lists that may
+change, especially long nested lists, use "lazy" numbering:
 
 ```markdown
 1.  Foo.
@@ -166,8 +157,8 @@ correctly. For longer lists that may change, especially long nested lists, use
 1.  Baz.
 ```
 
-However, if the list is small and you don't anticipate changing it, prefer fully
-numbered lists, because it's nicer to read in source:
+However, if the list is small and you don't anticipate changing it, prefer fully numbered lists, because it's nicer to
+read in source:
 
 ```markdown
 1.  Foo.
@@ -200,8 +191,7 @@ with no indent for wrapped text.
      1. Irregular nesting... DO NOT DO THIS.
 ```
 
-Even when there's no nesting, using the 4 space indent makes layout consistent
-for wrapped text:
+Even when there's no nesting, using the 4 space indent makes layout consistent for wrapped text:
 
 ```markdown
 *   Foo,
@@ -212,8 +202,7 @@ for wrapped text:
 2.  2 spaces again.
 ```
 
-However, when lists are small, not nested, and a single line, one space can
-suffice for both kinds of lists:
+However, when lists are small, not nested, and a single line, one space can suffice for both kinds of lists:
 
 ```markdown
 * Foo
@@ -228,8 +217,8 @@ suffice for both kinds of lists:
 
 ### Inline
 
-&#96;Backticks&#96; designate `inline code`, and will render all wrapped content
-literally. Use them for short code quotations and field names:
+&#96;Backticks&#96; designate `inline code`, and will render all wrapped content literally. Use them for short code
+quotations and field names:
 
 ```markdown
 You'll want to run `really_cool_script.sh arg`.
@@ -237,16 +226,14 @@ You'll want to run `really_cool_script.sh arg`.
 Pay attention to the `foo_bar_whammy` field in that table.
 ```
 
-Use inline code when referring to file types in an abstract sense, rather than a
-specific file:
+Use inline code when referring to file types in an abstract sense, rather than a specific file:
 
 ```markdown
 Be sure to update your `README.md`!
 ```
 
-Backticks are the most common approach for "escaping" Markdown metacharacters;
-in most situations where escaping would be needed, code font just makes sense
-anyway.
+Backticks are the most common approach for "escaping" Markdown metacharacters; in most situations where escaping would
+be needed, code font just makes sense anyway.
 
 ### Codeblocks
 
@@ -259,14 +246,13 @@ def Foo(self, bar):
 
 #### Declare the language
 
-It is best practice to explicitly declare the language, so that neither the
-syntax highlighter nor the next editor must guess.
+It is best practice to explicitly declare the language, so that neither the syntax highlighter nor the next editor must
+guess.
 
 #### Indented codeblocks are sometimes cleaner
 
-Four-space indenting is also interpreted as a codeblock. These can look
-cleaner and be easier to read in source, but there is no way to specify the
-language. We encourage their use when writing many short snippets:
+Four-space indenting is also interpreted as a codeblock. These can look cleaner and be easier to read in source, but
+there is no way to specify the language. We encourage their use when writing many short snippets:
 
 ```markdown
 You'll need to run:
@@ -284,9 +270,8 @@ And again:
 
 #### Escape newlines
 
-Because most commandline snippets are intended to be copied and pasted directly
-into a terminal, it's best practice to escape any newlines. Use a single
-backslash at the end of the line:
+Because most commandline snippets are intended to be copied and pasted directly into a terminal, it's best practice to
+escape any newlines. Use a single backslash at the end of the line:
 
 ```shell
 bazel run :target -- --flag --foo=longlonglonglonglongvalue \
@@ -295,8 +280,7 @@ bazel run :target -- --flag --foo=longlonglonglonglongvalue \
 
 #### Nest codeblocks within lists
 
-If you need a codeblock within a list, make sure to indent it so as to not break
-the list:
+If you need a codeblock within a list, make sure to indent it so as to not break the list:
 
 ```markdown
 *   Bullet.
@@ -308,8 +292,7 @@ the list:
 *   Next bullet.
 ```
 
-You can also create a nested code block with 4 spaces. Simply indent 4
-additional spaces from the list indentation:
+You can also create a nested code block with 4 spaces. Simply indent 4 additional spaces from the list indentation:
 
 ```markdown
 *   Bullet.
@@ -321,16 +304,15 @@ additional spaces from the list indentation:
 
 ## Links
 
-Long links make source Markdown difficult to read and break the 80 character
-wrapping. **Wherever possible, shorten your links**.
+Long links make source Markdown difficult to read and break the 80 character wrapping. **Wherever possible, shorten your
+links**.
 
 ### Use informative Markdown link titles
 
-Markdown link syntax allows you to set a link title, just as HTML does. Use it
-wisely.
+Markdown link syntax allows you to set a link title, just as HTML does. Use it wisely.
 
-Titling your links as "link" or "here" tells the reader precisely nothing when
-quickly scanning your doc and is a waste of space:
+Titling your links as "link" or "here" tells the reader precisely nothing when quickly scanning your doc and is a waste
+of space:
 
 ```markdown
 See the syntax guide for more info: [link](syntax_guide.md).
@@ -338,8 +320,7 @@ Or, check out the style guide [here](style_guide.md).
 DO NOT DO THIS.
 ```
 
-Instead, write the sentence naturally, then go back and wrap the most
-appropriate phrase with the link:
+Instead, write the sentence naturally, then go back and wrap the most appropriate phrase with the link:
 
 ```markdown
 See the [syntax guide](syntax_guide.md) for more info.
@@ -348,17 +329,16 @@ Or, check out the [style guide](style_guide.md).
 
 ## Images
 
-Use images sparingly, and prefer simple screenshots. This guide is designed
-around the idea that plain text gets users down to the business of communication
-faster with less reader distraction and author procrastination. However, it's
+Use images sparingly, and prefer simple screenshots. This guide is designed around the idea that plain text gets users
+down to the business of communication faster with less reader distraction and author procrastination. However, it's
 sometimes very helpful to show what you mean.
 
 See [image syntax](https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md#Images).
 
 ## Prefer lists to tables
 
-Any tables in your Markdown should be small. Complex, large tables are difficult
-to read in source and most importantly, **a pain to modify later**.
+Any tables in your Markdown should be small. Complex, large tables are difficult to read in source and most importantly,
+**a pain to modify later**.
 
 <!-- markdownlint-disable line-length -->
 ```markdown
@@ -371,8 +351,8 @@ DO NOT DO THIS
 ```
 <!-- markdownlint-enable line-length -->
 
-[Lists](#lists) and subheadings usually suffice to present the same information
-in a slightly less compact, though much more edit-friendly way:
+[Lists](#lists) and subheadings usually suffice to present the same information in a slightly less compact, though much
+more edit-friendly way:
 
 ```markdown
 ## Fruits
@@ -406,14 +386,12 @@ X-34 landspeeder | Whiny farmboys | Cheap since the X-38 came out
 
 ## Strongly prefer Markdown to HTML
 
-Please prefer standard Markdown syntax wherever possible and avoid HTML hacks.
-If you can't seem to accomplish what you want, reconsider whether you really
-need it. Except for [big tables](#prefer-lists-to-tables), Markdown meets almost
-all needs already.
+Please prefer standard Markdown syntax wherever possible and avoid HTML hacks. If you can't seem to accomplish what you
+want, reconsider whether you really need it. Except for [big tables](#prefer-lists-to-tables), Markdown meets almost all
+needs already.
 
-Every bit of HTML or Javascript hacking reduces the readability and portability.
-This in turn limits the usefulness of integrations with
-other tools, which may either present the source as plain text or render it. See
+Every bit of HTML or Javascript hacking reduces the readability and portability. This in turn limits the usefulness of
+integrations with other tools, which may either present the source as plain text or render it. See
 [Philosophy](philosophy.md).
 
 Gitiles does not render HTML.
