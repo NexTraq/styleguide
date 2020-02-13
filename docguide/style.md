@@ -78,7 +78,7 @@ Content.
 
 ## Character line limit
 
-The character limit for Markdown is 80 characters. Please obey this
+The character limit for Markdown is 120 characters. Please obey this
 wherever possible. Long URLs and tables are the usual suspects when breaking the
 rule. (Headings also can't be wrapped, but we encourage keeping them short).
 Otherwise, wrap your text:

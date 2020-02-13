@@ -147,12 +147,39 @@ project.
 
 To have Markdownlint format the files, add the ```--fix``` or ```-f``` option.
 
+#### Cases Not Handled
+
+The ```line-length``` rule currently only allows for the following:
+
+*   Checking for broken text after the line limit. For example:
+    
+    ```markdown
+    Preceding text: pretendthistextistoolongbyitself andhereismoretext
+    ```
+    
+    Triggers the rule, while the following does not:
+    
+    ```markdown
+    Preceding text: pretendthistextistoolongbyitself
+    ```
+    
+*   In the Node version of markdownlint, there is a ```strict``` option for the line-length rule. When enabled, all
+    cases of exceeding the line limit trigger the rule (including common cases like URLs). For example:
+    
+    ```markdown
+    pretendthistextistoolongbyitself
+    ```
+    
+    Triggers the rule.
+    
+There is no way to perform this check in a similar style to most linters, where unbroken bits of text that are too long
+are okay when they are on their own line, but trigger the rule when following broken text.
+
 ### Remark.js
 
 There is another linting tool that was explored before Markdownlint implemented
 formatting functionality called [Remark.js](https://github.com/remarkjs/remark).
-Using it is probably not necessary, but the configuration is left for posterity
-and in case it is ever useful again.
+It is more robust in terms of extension and formatting capabilities, but 
 
 ## Multi-Language
 
