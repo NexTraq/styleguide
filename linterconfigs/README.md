@@ -91,13 +91,31 @@ It would be wise to configure this as scripts in ```package.json```.
 ### Markdownlint
 
 Most style validation and formatting for Markdown will be handled by
-[Markdownlint](https://github.com/markdownlint/markdownlint). To use
-Markdownlint, start by installing it with Ruby:
+Markdownlint. There are two versions of this project: one written in
+[Ruby](https://github.com/markdownlint/markdownlint) and one written in
+[Node](https://github.com/DavidAnson/markdownlint). The Node version seems to be
+more fully featured, overall, but information about the Ruby version is left in
+case it better matches the engineer's preferences.
+
+#### Ruby
+
+To use the Ruby version, start by installing it.
 
 ```bash
 # If Ruby is not installed, install it first
 gem install mdl
 ```
+
+To run the checks, use the following command:
+    
+```bash
+# TODO: Update with path when cross-repo solution is implemented
+mdl -s <path/to/styleguide>/linterconfigs/markdown/style.rb <file pattern>
+```
+
+The Ruby version of Markdownlint does not currently support fixing lint errors.
+
+#### Node
 
 In a NodeJS project, Markdownlint can be installed via yarn and managed in the
 ```package.json```:
@@ -106,17 +124,25 @@ In a NodeJS project, Markdownlint can be installed via yarn and managed in the
 yarn add markdownlint-cli
 ```
 
-To run Markdownlint checks, use the following command:
+Then, from within a Node project, run:
 
 ```bash
-# TODO: Update with path when cross-repo solution is implemented
-mdl -c <path/to/repo>/linterconfigs/markdown/.markdownlintrc <file pattern>
+yarn markdownlint -c <path/to/styleguide>/linterconfigs/markdown/style.rb \
+        <file pattern>
 ```
 
-If Markdownlint is installed via yarn, use ```yarn markdownlint``` instead of
-```mdl```.
+In addition to the Node Markdownlint project, there is also a Node
+[project](https://github.com/igorshubovych/markdownlint-cli) which
+provides a command line interface on top. To install it, run:
 
-To have Markdownlint format the files, add the ```--fix``` option.
+```bash
+yarn add global markdownlint-cli
+```
+
+Then, the checks can be run with just ```markdownlint``` outside of a Node
+project.
+
+To have Markdownlint format the files, add the ```--fix``` or ```-f``` option.
 
 ### Remark.js
 
