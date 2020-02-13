@@ -7,9 +7,9 @@ possible.
 
 We seek to balance three goals:
 
-1. *Source text is readable and portable.*
-2. *Markdown files are maintainable over time and across teams.*
-3. *The syntax is simple and easy to remember.*
+1.  *Source text is readable and portable.*
+2.  *Markdown files are maintainable over time and across teams.*
+3.  *The syntax is simple and easy to remember.*
 
 Contents:
 
@@ -252,12 +252,10 @@ anyway.
 
 For code quotations longer than a single line, use a codeblock:
 
-<pre>
 ```python
 def Foo(self, bar):
   self.bar = bar
 ```
-</pre>
 
 #### Declare the language
 
@@ -290,12 +288,10 @@ Because most commandline snippets are intended to be copied and pasted directly
 into a terminal, it's best practice to escape any newlines. Use a single
 backslash at the end of the line:
 
-<pre>
 ```shell
 bazel run :target -- --flag --foo=longlonglonglonglongvalue \
---bar=anotherlonglonglonglonglonglonglonglonglonglongvalue
+        --bar=anotherlonglonglonglonglonglonglonglonglonglongvalue
 ```
-</pre>
 
 #### Nest codeblocks within lists
 

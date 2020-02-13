@@ -16,12 +16,12 @@ GitHub and Gitiles renders it when you browse the directory.
 For example, the file /README.md is rendered when you view the contents of the
 containing directory:
 
-https://github.com/google/styleguide/tree/gh-pages
+<https://github.com/google/styleguide/tree/gh-pages>
 
 Also `README.md` at `HEAD` ref is rendered by Gitiles when displaying repository
 index:
 
-https://gerrit.googlesource.com/gitiles/
+<https://gerrit.googlesource.com/gitiles/>
 
 ## Guidelines
 
@@ -50,8 +50,8 @@ following information:
 3.  **Status**: whether this package/library is deprecated, or not for general
     release, etc.
 4.  **More info**: where to go for more detailed documentation, such as:
-     * An overview.md file for more detailed conceptual information.
-     * Any API documentation for using this package/library.
+     *   An overview.md file for more detailed conceptual information.
+     *   Any API documentation for using this package/library.
 
 ## Example
 

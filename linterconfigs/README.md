@@ -35,7 +35,9 @@ Run Spotless using the following command:
 ```bash
 gradle spotlessApply
 ```
+
 or
+
 ```bash
 gradlew spotlessApply
 ```
@@ -72,6 +74,7 @@ module.exports = {
 ```
 
 In general, run ESLint checks like so:
+
 ```bash
 yarn eslint --ext .js .
 ```
@@ -107,7 +110,7 @@ gem install mdl
 ```
 
 To run the checks, use the following command:
-    
+
 ```bash
 # TODO: Update with path when cross-repo solution is implemented
 mdl -s <path/to/styleguide>/linterconfigs/markdown/style.rb <file pattern>

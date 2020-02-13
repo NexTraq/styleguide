@@ -1,7 +1,7 @@
 # Documentation Best Practices
 
-"Say what you mean, simply and directly." - [Brian Kernighan]
-(https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style)
+"Say what you mean, simply and directly." -
+[Brian Kernighan](https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style)
 
 Contents:
 
@@ -24,8 +24,8 @@ This guide encourages engineers to take ownership of their docs and keep
 them up to date with the same zeal we keep our tests in good order. Strive for
 this.
 
-* Identify what you really need: release docs, API docs, testing guidelines.
-* Delete cruft frequently and in small batches.
+*   Identify what you really need: release docs, API docs, testing guidelines.
+*   Delete cruft frequently and in small batches.
 
 ## Update docs with code
 
@@ -108,8 +108,8 @@ to detailed prose:
 
 3.  **README.md**: A good README.md orients the new user to the directory and
     points to more detailed explanation and user guides:
-    * What is this directory intended to hold?
-    * Which files should the developer look at first? Are some files an API?
-    * Who maintains this directory and where I can learn more?
+    *   What is this directory intended to hold?
+    *   Which files should the developer look at first? Are some files an API?
+    *   Who maintains this directory and where I can learn more?
 
     See the [README.md guidelines](READMEs.md).
