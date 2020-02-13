@@ -360,6 +360,7 @@ See [image syntax](https://gerrit.googlesource.com/gitiles/+/master/Documentatio
 Any tables in your Markdown should be small. Complex, large tables are difficult
 to read in source and most importantly, **a pain to modify later**.
 
+<!-- markdownlint-disable line-length -->
 ```markdown
 Fruit | Attribute | Notes
 --- | --- | --- | ---
@@ -368,6 +369,7 @@ Banana | [Convenient](https://example.com/SomeDifferentReallyReallyReallyReallyR
 
 DO NOT DO THIS
 ```
+<!-- markdownlint-enable line-length -->
 
 [Lists](#lists) and subheadings usually suffice to present the same information
 in a slightly less compact, though much more edit-friendly way:
@@ -377,17 +379,17 @@ in a slightly less compact, though much more edit-friendly way:
 
 ### Apple
 
-* [Juicy](https://SomeReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongURL)
-* Firm
-* Sweet
+*   [Juicy](https://SomeReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongURL)
+*   Firm
+*   Sweet
 
 Apples keep doctors away.
 
 ### Banana
 
-* [Convenient](https://example.com/SomeDifferentReallyReallyReallyReallyReallyReallyReallyReallyLongQuery)
-* Soft
-* Sweet
+*   [Convenient](https://example.com/SomeDifferentReallyReallyReallyReallyReallyReallyReallyReallyLongQuery)
+*   Soft
+*   Sweet
 
 Contrary to popular belief, most apes prefer mangoes.
 ```
