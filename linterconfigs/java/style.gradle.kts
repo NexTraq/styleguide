@@ -1,7 +1,6 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
 import com.diffplug.gradle.spotless.SpotlessTask
-import java.lang.IllegalStateException
 
 // Must use legacy plugin syntax for importing external files to build.gradle
 buildscript {
@@ -19,23 +18,33 @@ apply<SpotlessPlugin>()
 
 configure<CheckstyleExtension> {
     toolVersion = "8.28"
-    configFile = rootProject.file("$projectDir/gradle/nextraq_checkstyle.xml")
+    configFile = rootProject.file("$projectDir/linterconfigs/java/nextraq_checkstyle.xml")
 }
-tasks.withType(Checkstyle::class) {
-    source(projectDir.absolutePath)
-    classpath = files()
+
+// This task checks all sources. It does not respect sourceSet boundaries like other Checkstyle tasks do.
+tasks {
+    register<Checkstyle>("checkstyleChanged") {
+        source(projectDir.absolutePath)
+        classpath = files()
+        include(*(getChangedFiles().map { it.toRelativeString(file(".")) }.toTypedArray()))
+    }
 }
 
 configure<SpotlessExtension> {
+    isEnforceCheck = false
     java {
-        eclipse().configFile("$projectDir/gradle/eclipse-java-nextraq-style.xml")
+        eclipse().configFile("$projectDir/ideconfigs/eclipse-java-nextraq-style.xml")
         endWithNewline()
     }
 }
 
-tasks {
-    register<Checkstyle>("checkstyleChanged") {
-        include(*(getChangedFiles().toTypedArray()))
+// Configure Spotless to lint only changed files, unless parameters specify otherwise
+tasks.withType<SpotlessTask> {
+    doFirst {
+        val spotlessAll: String? by project
+        if (spotlessAll.isNullOrEmpty() || spotlessAll?.toBoolean() == false) {
+            filePatterns = getChangedFiles().map { it.absoluteFile }.joinToString(",")
+        }
     }
 }
 
@@ -48,9 +57,6 @@ if (gradle.startParameter.taskNames
     tasks.withType(Checkstyle::class) {
         enabled = false
     }
-    tasks.withType(SpotlessTask::class) {
-        enabled = false
-    }
 }
 
 /**
@@ -59,20 +65,22 @@ if (gradle.startParameter.taskNames
  * The latter will result in the current working copy being compared to the target branch. Note that, unless "origin/"
  * is specified, this function will compare local copies.
  *
- * @return The relative paths (from the current working directory) to all changed files
+ * @return File objects for each changed file
  */
-fun getChangedFiles(): List<String> {
+fun getChangedFiles(): List<File> {
+    // These params are specified in gradle.properties. If you want to use a source branch other than the working copy
+    // or a target branch other than 'origin/master', specify them there.
     val sourceBranchProp: String? by project
     val targetBranchProp: String? by project
     val sourceBranch: String? = if (sourceBranchProp.isNullOrEmpty()) "" else sourceBranchProp
-    val targetBranch: String? = if (targetBranchProp.isNullOrEmpty()) "master" else targetBranchProp
+    val targetBranch: String? = if (targetBranchProp.isNullOrEmpty()) "origin/master" else targetBranchProp
 
     return "git diff --name-status --diff-filter=dr $targetBranch $sourceBranch"
             .trim().runCommand().trim().split("\n")
             .filter { it.isNotEmpty() }
             .map { filename ->
                 val scrubbedPath: String = """\w\s+(.+)""".toRegex().find(filename)?.groupValues?.get(1)!!
-                file("$projectDir${File.separator}$scrubbedPath").toRelativeString(file("."))
+                file("$projectDir${File.separator}$scrubbedPath")
             }.toList()
 }
 
