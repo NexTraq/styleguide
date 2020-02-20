@@ -42,7 +42,7 @@ configure<SpotlessExtension> {
 tasks.withType<SpotlessTask> {
     doFirst {
         val spotlessAll: String? by project
-        if (spotlessAll.isNullOrEmpty() || spotlessAll?.toBoolean() == false) {
+        if (filePatterns.isNullOrEmpty() && (spotlessAll.isNullOrEmpty() || spotlessAll?.toBoolean() == false)) {
             filePatterns = getChangedFiles().map { it.absoluteFile }.joinToString(",")
         }
     }
