@@ -19,10 +19,11 @@ no-reversed-links: true
 no-multiple-blanks: true
 
 # TODO(https://github.com/markdownlint/markdownlint/issues/295): Line length rule does not trigger if there are no
-                                                               # spaces after the break.
+#                                                                spaces after the break.
 line-length:
     line_length: 120
     tables: false # Except tables to preserve their formatting
+    stern: true
 commands-show-output: true # Triggers when bash code is preceded by $, unless command output is displayed
 no-missing-space-atx: true
 no-multiple-space-atx: true
