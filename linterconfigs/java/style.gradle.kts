@@ -5,7 +5,20 @@ import com.diffplug.gradle.spotless.SpotlessTask
 // Must use legacy plugin syntax for importing external files to build.gradle
 buildscript {
     repositories {
-        maven(url = "https://plugins.gradle.org/m2/")
+        maven {
+            url = uri("http://rnh01vart01.prd.nextraq.com:8081/artifactory/repo")
+            /**
+             * Using insecure protocols with repositories has been deprecated. This is
+             * scheduled to be removed in Gradle 7.0. Switch Maven repository
+             * 'maven(http://rnh01vart01.prd.nextraq.com:8081/artifactory/repo)' to a
+             * secure protocol (like HTTPS) or allow insecure protocols.
+             * See https://docs.gradle.org/6.2.2/dsl/org.gradle.api.artifacts
+             * .repositories.UrlArtifactRepository.html
+             * #org.gradle.api.artifacts.repositories.UrlArtifactRepository:allowInsecureProtocol
+             * for more details.
+             */
+            isAllowInsecureProtocol = true
+        }
     }
     dependencies {
         classpath("com.diffplug.spotless:spotless-plugin-gradle:3.27.1")
@@ -18,22 +31,26 @@ apply<SpotlessPlugin>()
 
 configure<CheckstyleExtension> {
     toolVersion = "8.28"
-    configFile = rootProject.file("$projectDir/linterconfigs/java/nextraq_checkstyle.xml")
+    configFile = rootProject.file("$projectDir/lint/nextraq_checkstyle.xml")
+    // TODO(https://nextraq.atlassian.net/browse/INFRA-42): checkstyleMain and checkstyleTest behave identically. Either
+    //                                                      unify them or make them behave as expected.
 }
 
 // This task checks all sources. It does not respect sourceSet boundaries like other Checkstyle tasks do.
 tasks {
     register<Checkstyle>("checkstyleChanged") {
+        include(*(getChangedFiles().map { it.toRelativeString(file(".")) }.toTypedArray()))
+    }
+    withType<Checkstyle> {
         source(projectDir.absolutePath)
         classpath = files()
-        include(*(getChangedFiles().map { it.toRelativeString(file(".")) }.toTypedArray()))
     }
 }
 
 configure<SpotlessExtension> {
     isEnforceCheck = false
     java {
-        eclipse().configFile("$projectDir/ideconfigs/eclipse-java-nextraq-style.xml")
+        eclipse().configFile("$projectDir/lint/eclipse-java-nextraq-style.xml")
         endWithNewline()
     }
 }
@@ -50,9 +67,9 @@ tasks.withType<SpotlessTask> {
 
 // Checkstyle felt the need to add itself to the java plugin's build process without asking. How rude.
 if (gradle.startParameter.taskNames
-        .intersect(
-                listOf("check",
-                        *tasks.filter { it.dependsOn.contains("check") }.map { it.name }.toTypedArray()))
+                .intersect(
+                        listOf("check",
+                                *tasks.filter { it.dependsOn.contains("check") }.map { it.name }.toTypedArray()))
                 .isNotEmpty()) {
     tasks.withType(Checkstyle::class) {
         enabled = false
@@ -73,7 +90,7 @@ fun getChangedFiles(): List<File> {
     val sourceBranchProp: String? by project
     val targetBranchProp: String? by project
     val sourceBranch: String? = if (sourceBranchProp.isNullOrEmpty()) "" else sourceBranchProp
-    val targetBranch: String? = if (targetBranchProp.isNullOrEmpty()) "origin/master" else targetBranchProp
+    val targetBranch: String? = if (targetBranchProp.isNullOrEmpty()) "master" else targetBranchProp
 
     return "git diff --name-status --diff-filter=dr $targetBranch $sourceBranch"
             .trim().runCommand().trim().split("\n")
