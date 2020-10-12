@@ -61,3 +61,23 @@ NOTE: Spotless does not have its own CLI interface and must be integrated with a
 ### Cases Not Handled By Formatter
 
 Spotless will not remove extraneous newlines before closing brace of a block.
+
+### Known Issues
+
+Some odd cases have been encountered in our linting configurations, and we either have not had time or been able to fix
+them. These should be noted here so they don't throw anyone off.
+
+#### Checkstyle
+
+* Does not properly respect separation of standard library imports into separate group
+* Asks for a ```<p>``` tag in certain places, where HTML in javadoc should be disallowed
+* Requires javadoc for an ```Autowired``` constructor
+* Requires a summary for javadoc; sometimes this is unnecessary when using ```@param``` and ```@return``` tags
+* Wants first line of javadoc to end in period
+* Asks for javadoc on private methods
+
+#### Spotless
+
+* **Does not allow** space in between a closing curlybrace and an ```else``` or ```catch```. This is very bizarre
+  behavior, but does not appear to be configurable. **Be sure to fix this manually after running Spotless**.
+* Does not respect line breaks in enum values, despite the configuration option for doing so being enabled
